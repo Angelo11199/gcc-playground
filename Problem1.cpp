@@ -20,6 +20,7 @@ double convert(int userInput, string currency) {
     }
     return 0;
 }
+
 double heronsFormula(double a, double b, double c) {
     double s = (a + b + c) / 2;
     double area = sqrt(s * (s - a) * (s - b) * (s - c));
@@ -30,6 +31,11 @@ double slope(double x1, double y1, double x2, double y2) {
     return m;
 }
 int main(int argc, char const *argv[]) {
+    // herons formula
+    // double a, b, c;
+    // cin >> a >> b >> c;
+    // double slope = heronsFormula(a, b, c);
+    cout << slope << endl;
     double userValueInput = 0;
     string userInput = "";
     double result = 0;
