@@ -7,6 +7,7 @@ using namespace std;
 int main(int argc, char const *argv[]) {
     // check if input is a  leaf year
     int year;
+
     cout << "Enter a year: ";
     cin >> year;
     if (year % 400 == 0) {
