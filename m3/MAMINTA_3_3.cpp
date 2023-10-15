@@ -29,7 +29,6 @@ int main() {
         if (num2 == 0) throw runtime_error("Divide by zero exception");
         cout << "Quotient: " << num1 / num2 << endl;
         cout << "Remainder: " << num1 % num2 << endl;
-
     } catch (runtime_error& e) {
         cout << "Quotient: CANNOT BE" << endl;
         cout << "Remainder: CANNOT BE" << endl;
