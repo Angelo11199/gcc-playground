@@ -8,6 +8,7 @@ using namespace std;
 void print(string s) {
     cout << s << endl;
 }
+// NUMBER 1
 int isPositive() {
     int num;
     cout << "Enter a number: ";
@@ -32,6 +33,7 @@ int isPositive() {
     }
     return 0;
 }
+// NUMBER 2
 int calculator() {
     // create a calculator using switch case
     int num1, num2;
@@ -63,5 +65,8 @@ int calculator() {
     return 0;
 }
 int main(int argc, char const *argv[]) {
+    // Number 1
+    calculator();
+    // Number 2
     isPositive();
 }
