@@ -36,7 +36,7 @@ int isPositive() {
 // NUMBER 2
 int calculator() {
     // create a calculator using switch case
-    int num1, num2;
+    float num1, num2;
     char op;
     cout << "Enter first number: ";
     cin >> num1;
