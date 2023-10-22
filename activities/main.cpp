@@ -36,7 +36,7 @@ int isPositive() {
 // NUMBER 2
 int calculator() {
     // create a calculator using switch case
-    float num1, num2;
+    int num1, num2;
     char op;
     cout << "Enter first number: ";
     cin >> num1;
@@ -44,29 +44,50 @@ int calculator() {
     cin >> num2;
     cout << "Enter operator: ";
     cin >> op;
-    cout << "The result of the operation is : ";
     switch (op) {
         case '+':
-            cout << num1 + num2 << endl;
+            cout << num1 << " + " << num2 << " = " << num1 + num2 << endl;
             break;
         case '-':
-            cout << num1 - num2 << endl;
+            cout << num1 << " - " << num2 << " = " << num1 - num2 << endl;
             break;
         case '*':
-            cout << num1 * num2 << endl;
+            cout << num1 << " * " << num2 << " = " << num1 * num2 << endl;
             break;
         case '/':
-            cout << num1 / num2 << endl;
+            cout << num1 << " / " << num2 << " = " << num1 / num2 << endl;
             break;
         default:
             cout << "Invalid operator" << endl;
             break;
     }
-    return 0;
 }
 int main(int argc, char const *argv[]) {
-    // Number 1
-    calculator();
-    // Number 2
-    isPositive();
+    // // Number 1
+    // calculator();
+    // // Number 2
+    // isPositive();
+    float a, c;
+    char b;
+    string d;
+    cout << "\nEnter first number: ";
+    cin >> a;
+
+    cout << "\nEnter second number: ";
+    cin >> c;
+
+    cout << "\nPick your operator (+,-,*,/): ";
+    cin >> b;
+    if (b == '+')
+        d = to_string(a + c);
+    else if (b == '-')
+        d = to_string(a - c);
+    else if (b == '*')
+        d = to_string(a * c);
+    else if (b == '/')
+        d = to_string(a / c);
+    else
+        d = "Syntax Error.";
+    cout << "\nAnswer: " << d << endl;
+    return 0;
 }
