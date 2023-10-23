@@ -23,6 +23,6 @@ double getNum(std::string prompt) {
 std::string getStr(std::string prompt) {
     std::string s;
     std::cout << prompt;
-    std::cin >> s;
+    std::getline(std::cin, s);
     return s;
 }
