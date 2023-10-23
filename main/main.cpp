@@ -79,6 +79,7 @@ void menuOfShapes() {
 }
 void degree() {
     int degree = getNum("Enter a degree celsius: ");
+    // if method
     if (degree >= 100)
         print("Steam");
 
@@ -88,11 +89,29 @@ void degree() {
         print("Water ");
     else if (degree <= 0)
         print("Water is freezing");
+    // switch case method with range
+    if (degree <= 0) {
+        print("Water is freezing");
+    }
+    if (degree >= 100) {
+        print("Water is boiling");
+    }
+    switch (degree) {
+        case 45 ... 99:
+            print("Water is boiling");
+            break;
+        case 1 ... 44:
+            print("Water");
+            break;
+
+        default:
+            break;
+    }
 }
 void letterDisplay() {
     string letter = getStr("Enter a letter: ");
-    // convert letter to uppercase
     letter[0] = toupper(letter[0]);
+    // switch case method
     switch (letter[0]) {
         case 'D':
             print("Destroyer");
@@ -111,9 +130,18 @@ void letterDisplay() {
             print("Invalid input");
             break;
     }
+    // if method
+    if (letter[0] == 'D') print("Destroyer");
+    if (letter[0] == 'B') print("Battleship");
+    if (letter[0] == 'F') print("Frigate");
+    if (letter[0] == 'C')
+        print("Cruiser");
+    else
+        print("Invalid input");
 }
 int main(int argc, char const *argv[]) {
-    // degree();
+    degree();
     letterDisplay();
+
     return 0;
 }
