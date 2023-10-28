@@ -80,15 +80,14 @@ void menuOfShapes() {
 void degree() {
     int degree = getNum("Enter a degree celsius: ");
     // if method
-    if (degree >= 100)
-        print("Steam");
-
-    if (degree <= 45 && degree >= 99)
-        print("Water is boiling");
-    else if (degree <= 46 && degree >= 1)
-        print("Water ");
-    else if (degree <= 0)
-        print("Water is freezing");
+    // if (degree >= 100)
+    //     print("Steam");
+    // if (degree <= 46 && degree >= 99)
+    //     print("Water is boiling");
+    // else if (degree <= 45 && degree >= 1)
+    //     print("Water ");
+    // else if (degree <= 0)
+    //     print("Water is freezing");
     // switch case method with range
     if (degree <= 0) {
         print("Water is freezing");
@@ -140,7 +139,7 @@ void letterDisplay() {
         print("Invalid input");
 }
 int main(int argc, char const *argv[]) {
-    degree();
+    // degree();
     letterDisplay();
 
     return 0;
