@@ -4,143 +4,38 @@
 
 #include "../include/snippets.h"
 using namespace std;
-void numGame() {
-    // create a random guessing game
-    int num;
-    cin >> num;
-    int randNum = rand() % 100;
-    while (num != randNum) {
-        if (num > randNum) {
-            print("Too high");
-        } else {
-            print("Too low");
-        }
-        num = getNum("Enter a guess (1-100): ");
-    }
-    print("You got it!");
+// max limit of factorial : 20. This is a recursive function
+long int getFactorial(long int n) {
+    do {
+        if (n == 1 || n == 0) break;
+        return n * getFactorial(n - 1);
+    } while (true);
+    return 1;
 }
-void oddOrEven() {
-    int num1 = getNum("input num: ");
-    string result = num1 % 2 == 0 ? "even" : "odd";
-    print(num1 + " is " + result);
-    cout << num1 << " is " << result << endl;
-}
-void grades() {
-    int grade = getNum("Enter a number: ");
-    // int grade;
-    // cin >> grade;
-    cout << grade << endl;
-    if (grade >= 91 && grade <= 100) print("A");
-    if (grade >= 81 && grade <= 90) print("B");
-    if (grade >= 70 && grade <= 80) print("C");
-    if (grade >= 0 && grade <= 69)
-        print("D");
-    else
-        print("Invalid grade");
-}
-void numero() {
-    int num = getNum("Enter a number: ");
-    switch (num) {
-        case 1:
-            print("Isa");
-            break;
-        case 2:
-            print("Dalawa");
-            break;
-        case 3:
-            print("Tatlo");
-            break;
-
-        default:
-            print("Invalid input");
-            break;
+// reversing using pointers
+void Reverse(string result, string* strPtr, int size) {
+    for (int i = size - 1; i >= 0; i--) {
+        *strPtr += result[i];
     }
 }
-void menuOfShapes() {
-    print("S-Square");
-    print("R-Rectangle");
-    print("C-Circle");
-    string choice = getStr("Enter a choice: ");
-    choice[0] = toupper(choice[0]);
-
-    switch (choice[0]) {
-        case 'S':
-            print("You Choose Square");
+void multiplication(int n, int max = 10) {
+    int n = -1;
+    while (n <= 0) {
+        n = getNum("Enter a number: ");
+        if (n > 0) {
+            multiplication(n);
             break;
-        case 'R':
-            print("You Choose Rectangle");
-            break;
-        case 'C':
-            print("You Choose Circle");
-            break;
-        default:
-            break;
+        } else
+            print("Please enter a positive NON ZERO number");
     }
+    for (int i = 1; i <= max; i++)
+        print(to_string(n) + " * " + to_string(i) + " = " + to_string(n * i));
 }
-void degree() {
-    int degree = getNum("Enter a degree celsius: ");
-    // if method
-    // if (degree >= 100)
-    //     print("Steam");
-    // if (degree <= 46 && degree >= 99)
-    //     print("Water is boiling");
-    // else if (degree <= 45 && degree >= 1)
-    //     print("Water ");
-    // else if (degree <= 0)
-    //     print("Water is freezing");
-    // switch case method with range
-    if (degree <= 0) {
-        print("Water is freezing");
-    }
-    if (degree >= 100) {
-        print("Water is boiling");
-    }
-    switch (degree) {
-        case 45 ... 99:
-            print("Water is boiling");
-            break;
-        case 1 ... 44:
-            print("Water");
-            break;
-
-        default:
-            break;
-    }
-}
-void letterDisplay() {
-    string letter = getStr("Enter a letter: ");
-    letter[0] = toupper(letter[0]);
-    // switch case method
-    switch (letter[0]) {
-        case 'D':
-            print("Destroyer");
-            break;
-        case 'B':
-            print("Battleship");
-            break;
-        case 'F':
-            print("Frigate");
-            break;
-        case 'C':
-            print("Cruiser");
-            break;
-
-        default:
-            print("Invalid input");
-            break;
-    }
-    // if method
-    if (letter[0] == 'D') print("Destroyer");
-    if (letter[0] == 'B') print("Battleship");
-    if (letter[0] == 'F') print("Frigate");
-    if (letter[0] == 'C')
-        print("Cruiser");
-    else
-        print("Invalid input");
-}
-int main(int argc, char const *argv[]) {
-    // degree();
-    letterDisplay();
-
+int main(int argc, char const* argv[]) {
+    string value = getStr("Enter a string: ");
+    string result = "";
+    string* resultPtr = &result;
+    Reverse(value, resultPtr, value.length());
+    cout << "Reversed string: " << result << endl;
     return 0;
 }
