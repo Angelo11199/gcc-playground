@@ -33,6 +33,11 @@ void multiplication(int n, int max = 10) {
 }
 // deg
 int main(int argc, char const *argv[]) {
-    multiplication(getNum("Enter a number: "));
+    int sum = 0, num = getNum("Enter a number: ");
+    while (num > 0) {
+        sum += num;
+        num--;
+    }
+    cout << sum << endl;
     return 0;
 }
