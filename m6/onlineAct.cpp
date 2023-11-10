@@ -110,6 +110,6 @@ void printNums(int max){
 }
 int main(int argc, char const *argv[]) {
     printNumbers();
-    // halfTriangle();
-    // printNums(1);
+    halfTriangle();
+    printNums(9);
 }
