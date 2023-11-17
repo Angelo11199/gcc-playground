@@ -8,9 +8,12 @@ using namespace std;
 #define PIN 1234
 #define PUK 4567
 
-int checkInput(int correctNum, int attempts = 3, string prompt = "Enter your pin:") {
-    if (attempts < 1)
-        return 0;
+int checkInput(int correctNum, int attempts = 3, string prompt = "Enter your pin:", bool isPUK = true) {
+    if (attempts < 1 && !isPUK) {
+        bool PUKSuccess = checkInput(PUK, 3, "Enter your PUK:", false);
+        print(PUKSuccess ? "PUK ACCEPTED" : "SIM BLOCKED");
+        return PUKSuccess ? 1 : 0;
+    }
     int Pin = getNum(prompt);
     if (Pin == correctNum)
         return 1;
@@ -23,8 +26,7 @@ int main(int argc, char const *argv[]) {
     bool success = checkInput(PIN);
     if (success) {
         print("welcome to SGS Telecom");
-        bool PUKSuccess = checkInput(PUK, 3, "Enter your PUK:");
-        print(PUKSuccess ? "PUK ACCEPTED" : "SIM BLOCKED");
+
     } else
         print("You have failed to log in");
     return 0;
