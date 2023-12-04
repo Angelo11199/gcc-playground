@@ -5,6 +5,9 @@
 void print(std::string s) {
     std::cout << s << std::endl;
 }
+void printLine(std::string s) {
+    std::cout << s;
+}
 double getNum(std::string prompt) {
     std::string num;
     char* p;
@@ -20,6 +23,7 @@ double getNum(std::string prompt) {
     } while (true);
     return 0;
 }
+
 std::string getStr(std::string prompt) {
     std::string s;
     std::cout << prompt;

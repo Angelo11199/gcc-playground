@@ -19,11 +19,15 @@ int checkInput(int correctNum, int attempts = 3, string prompt = "Enter your pin
     }
 }
 int main(int argc, char const *argv[]) {
-    bool success = checkInput(PIN);
-    print(success ? "Correct PIN" : "Incorrect PIN");
-    if (!success) {
-        bool pukSuccess = checkInput(PUK, 3, "Enter your PUK:");
-        print(pukSuccess ? "Correct PUK" : "SIM BLOCKED");
+    // Local variable declaration:
+    int x = 0;
+
+    do {
+        x++;
+
     }
+
+    while (x < 10);
+
     return 0;
 }
