@@ -8,14 +8,16 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"${file}",
-				"${fileDirname}/../include/*.cpp",
+				"${fileDirname}/../include/*.h",
 				"-o",
 				"${fileDirname}/../builds/${fileBasenameNoExtension}"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
 			},
-			"problemMatcher": ["$gcc"],
+			"problemMatcher": [
+				"$gcc"
+			],
 			"group": {
 				"kind": "build",
 				"isDefault": true
