@@ -1,20 +1,50 @@
-#include <ctime>
+#include <iostream>
+using namespace std;
+// prints in a new line
+template <typename T>
+void print(T Value) {
+    cout << Value << endl;
+}
+// Prints in the same line
+template <typename U>
+void printLn(U s) {
+    cout << s;
+};
 
-#include "../include/snippets.h"
+// gets a number from the user and loop until user enters a valid number
+double getNum(string prompt = "") {
+    string num;
+    char* p;
+    do {
+        cout << prompt;
+        cin >> num;
+        double convertedNum = strtod(num.c_str(), &p);
+        if (*p) {
+            cout << "Invalid input" << endl;
+        } else {
+            cin.ignore();
+            return convertedNum;
+        }
+    } while (true);
+    return 0;
+}
 
-double Add(double a, double b) {
+double Add(double a = 0, double b = 0) {
     return a + b;
 }
-double Subtract(double a, double b) {
+double Subtract(double a = 0, double b = 0) {
     return a - b;
 }
-double Multiply(double a, double b) {
+double Multiply(double a = 0, double b = 0) {
     return a * b;
 }
-double Divide(double a, double b) {
+double Divide(double a = 0, double b = 0) {
     return a / b;
 }
-
+double Modulo(double a = 0, double b = 0) {
+    // typecast to int to get the remainder
+    return (int)a % (int)b;
+}
 int main(int argc, char const* argv[]) {
     while (true) {
         print("========================================");
@@ -24,9 +54,10 @@ int main(int argc, char const* argv[]) {
         print("2. Subtract two numbers");
         print("3. Multiply two numbers");
         print("4. Divide two numbers");
-        print("5. Exit");
+        print("5. Modulo two numbers");
+        print("6. Exit");
         int choice = getNum("Enter your choice: ");
-        if (choice == 5) {
+        if (choice == 6) {
             print("Exiting...");
             break;
         }
@@ -55,6 +86,12 @@ int main(int argc, char const* argv[]) {
                 print(Divide(num1, num2));
                 break;
             }
+            case 5: {
+                printLn("Remainder is: ");
+                print(Modulo(num1, num2));
+                break;
+            }
+
             default: {
                 print("Invalid choice");
                 break;

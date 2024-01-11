@@ -1,73 +1,97 @@
+#include <math.h>
+
 #include <iostream>
-// include rand
-#include <cstdlib>
-
-#include "../include/snippets.h"
 using namespace std;
-// define PIN VALUE
-#define PIN 1234
-#define PUK 23422342
-int PresidentA = 0;
-int PresidentB = 0;
-int PresidentC = 0;
-
-int votePresident() {
-    char vote = getStr("Enter your vote:")[0];
-    // switch case
-    // lowercase vote
-    vote = tolower(vote);
-    switch (vote) {
-        case 'a':
-            print("You have voted for FPJ");
-            PresidentA++;
-            break;
-        case 'b':
-            print("You have voted for ROCO");
-            PresidentB++;
-            break;
-        case 'c':
-            print("You have voted for GMA");
-            PresidentC++;
-            break;
-        default:
-            print("Invalid vote");
-            votePresident();
-            break;
-    }
-    return vote;
+// prints in a new line
+template <typename T>
+void print(T Value) {
+    cout << Value << endl;
 }
-int main(int argc, char const *argv[]) {
+// Prints in the same line
+template <typename userInput>
+void printLn(userInput value) {
+    cout << value;
+};
+
+// gets a number from the user
+double getNum(string prompt = "") {
+    string num;
+    char* p;
+    do {
+        cout << prompt;
+        cin >> num;
+        double convertedNum = strtod(num.c_str(), &p);
+        if (*p) {
+            cout << "Invalid input" << endl;
+        } else {
+            cin.ignore();
+            return convertedNum;
+        }
+    } while (true);
+    return 0;
+}
+double areaSquare(double side) {
+    return side * side;
+}
+double areaRectangle(double length, double width) {
+    return length * width;
+}
+double areaTriangle(double base, double height) {
+    return 0.5 * base * height;
+}
+double areaCircle(double radius) {
+    return M_PI * radius * radius;
+}
+int main(int argc, char const* argv[]) {
+    // loop until user exits
     while (true) {
-        print("Welcome to the SGS Telecom voting system");
-        print("Enter V to vote, R to see results, or Q to quit");
-        char userChoice = getStr("Enter your choice:")[0];
-        switch (userChoice) {
-            case 'V':
-            case 'v':
-                // print availble presidents
-                print("A. FPJ");
-                print("B. ROCO");
-                print("C. GMA");
-                votePresident();
+        print("========================================");
+        print("                  MENU!               ");
+        print("========================================");
+        print("1. Area of a square");
+        print("2. Area of a rectangle");
+        print("3. Area of a triangle");
+        print("4. Area of a circle");
+        print("5. Exit");
+        int choice = getNum("Enter your choice: ");
+        if (choice == 5) {
+            print("Exiting...");
+            break;
+        }
+        switch (choice) {
+            case 1: {
+                double side = getNum("Enter side: ");
+                printLn("Area is: ");
+                print(areaSquare(side));
                 break;
-            case 'R':
-            case 'r':
-                print("President A: " + to_string(PresidentA));
-                print("President B: " + to_string(PresidentB));
-                print("President C: " + to_string(PresidentC));
+            }
+            case 2: {
+                double length = getNum("Enter length: ");
+                double width = getNum("Enter width: ");
+                printLn("Area is: ");
+                print(areaRectangle(length, width));
                 break;
-            case 'Q':
-            case 'q':
-                print("Thank you for using the SGS Telecom voting system");
-                return 0;
+            }
+            case 3: {
+                double base = getNum("Enter base: ");
+                double height = getNum("Enter height: ");
+                printLn("Area is: ");
+                print(areaTriangle(base, height));
                 break;
-            default:
+            }
+            case 4: {
+                double radius = getNum("Enter radius: ");
+                printLn("Area is: ");
+                print(areaCircle(radius));
+                break;
+            }
+            default: {
                 print("Invalid choice");
-                // clear screen
-                system("clear");
                 break;
+            }
         }
     }
 
+    /* code */
     return 0;
 }
