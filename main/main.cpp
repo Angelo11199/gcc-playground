@@ -1,9 +1,7 @@
 #include <ctime>
 
 #include "../include/snippets.h"
-double* getNums() {
-    return nums;
-}
+
 double Add(double a, double b) {
     return a + b;
 }
@@ -42,15 +40,18 @@ int main(int argc, char const* argv[]) {
                 break;
             }
             case 2: {
+                printLn("Difference is: ");
                 print(Subtract(num1, num2));
 
                 break;
             }
             case 3: {
+                printLn("Product is: ");
                 print(Multiply(num1, num2));
                 break;
             }
             case 4: {
+                printLn("Quotient is: ");
                 print(Divide(num1, num2));
                 break;
             }
