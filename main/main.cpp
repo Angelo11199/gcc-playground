@@ -2,9 +2,6 @@
 
 #include "../include/snippets.h"
 double* getNums() {
-    double* nums = new double[2];
-    nums[0] = getNum("Enter first number: ");
-    nums[1] = getNum("Enter second number: ");
     return nums;
 }
 double Add(double a, double b) {
@@ -32,27 +29,29 @@ int main(int argc, char const* argv[]) {
         print("5. Exit");
         int choice = getNum("Enter your choice: ");
         if (choice == 5) {
+            print("Exiting...");
             break;
         }
-        double* nums = getNums();
+        double num1 = getNum("Enter first number: ");
+        double num2 = getNum("Enter second number: ");
         switch (choice) {
             case 1: {
                 printLn("Sum is: ");
-                print(Add(nums[0], nums[1]));
+                print(Add(num1, num2));
 
                 break;
             }
             case 2: {
-                print(Subtract(nums[0], nums[1]));
+                print(Subtract(num1, num2));
 
                 break;
             }
             case 3: {
-                print(Multiply(nums[0], nums[1]));
+                print(Multiply(num1, num2));
                 break;
             }
             case 4: {
-                print(Divide(nums[0], nums[1]));
+                print(Divide(num1, num2));
                 break;
             }
             default: {
