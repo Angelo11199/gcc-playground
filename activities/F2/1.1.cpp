@@ -10,27 +10,27 @@ void print(T Value) {
 // Prints in the same line
 template <typename U>
 void printLn(U s) {
-    std::cout << s;
+    cout << s;
 };
 // gets a string from the user
-string getStr(std::string prompt = "") {
+string getStr(string prompt = "") {
     string s;
     cout << prompt;
     getline(cin, s);
     return s;
 };
 // gets a number from the user
-double getNum(std::string prompt = "") {
-    std::string num;
+double getNum(string prompt = "") {
+    string num;
     char* p;
     do {
-        std::cout << prompt;
-        std::cin >> num;
+        cout << prompt;
+        cin >> num;
         double convertedNum = strtod(num.c_str(), &p);
         if (*p) {
-            std::cout << "Invalid input" << std::endl;
+            cout << "Invalid input" << endl;
         } else {
-            std::cin.ignore();
+            cin.ignore();
             return convertedNum;
         }
     } while (true);

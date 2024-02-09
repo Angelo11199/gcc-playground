@@ -47,6 +47,7 @@
 		"climits": "cpp",
 		"cinttypes": "cpp",
 		"iomanip": "cpp",
-		"ctime": "cpp"
+		"ctime": "cpp",
+		"cstring": "cpp"
 	}
 }
