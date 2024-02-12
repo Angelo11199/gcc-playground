@@ -105,16 +105,11 @@ float calculateAverageGPA(const Students students[], int numStudents) {
         return 0.0;
 }
 void printMenu() {
-    print( "                                                                                                                     ");
-    print( "   _______________________________          _______________________________          _______________________________ ");
-    print( "  |                               |        |                               |        |                               |");
-    print( "  |       Add Student [1]         |        |    Display All Students [2]   |        | Find Students by Last Name[3] |");
-    print( "  |_______________________________|        |_______________________________|        |_______________________________|");
-    print( "   _______________________________          _______________________________          _______________________________");
-    print( "  |                               |        |                               |        |                               |");
-    print( "  |  Compute Average GPA [4]      |        |             Exit [0]          |        |                               |");
-    print( "  |_______________________________|        |_______________________________|        |_______________________________|");
-
+    print("1. Add student");
+    print("2. Display students");
+    print("3. Calculate average GPA");
+    print("4. Find students by last name");
+    print("5. Exit");
 }
 void pauseAndContinue() {
 #ifdef _WIN32
