@@ -8,7 +8,8 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"${file}",
-				// "${fileDirname}/../include/*.h",
+				"-I",
+				"${fileDirname}/../include/",
 				"-o",
 				"${fileDirname}/../builds/${fileBasenameNoExtension}"
 			],

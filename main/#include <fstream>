@@ -1,0 +1,173 @@
+#include <fstream>
+#include <iostream>
+
+#include "../include/snippets.h"
+#define MAXITEMS 100
+using namespace std;
+
+struct item {
+    int id;
+    string name;
+    int price;
+};
+struct node {
+    item itemData;
+    node *next;
+};
+void update(node *head, int old, int new_data) {
+    node *current = head;
+    while (current != NULL) {
+        if (current->data == old) {
+            current->data = new_data;
+        }
+        current = current->next;
+    }
+}
+void printCart(node *head) {
+    node *current = head;
+    while (current != NULL) {
+        cout << current->itemData.id << " " << current->itemData.name << " " << current->itemData.price << endl;
+        current = current->next;
+    }
+    cout << endl;
+}
+void insert(node *head, item data) {
+    node *current = head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+
+    current->next = new node;
+    current = current->next;
+    current->itemData = data;
+    current->next = NULL;
+}
+void remove(node *head, item data) {
+    node *current = head;
+    while (current->next != NULL) {
+        if (current->next->itemData.id == data.id) {
+            node *temp = current->next;
+            current->next = current->next->next;
+            delete temp;
+            return;
+        }
+
+        current = current->next;
+    }
+}
+void clear(node *head) {
+    node *current = head->next;
+    node *next = NULL;
+    while (current != NULL) {
+        next = current->next;
+        delete current;
+        current = next;
+    }
+    head->next = NULL;
+}
+void reverse(node *head) {
+    node *current = head->next;
+    node *prev = NULL;
+    node *next = NULL;
+    while (current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    head->next = prev;
+}
+void sort(node *head) {
+    node *current = head->next;
+    node *index = NULL;
+    int temp;
+    while (current != NULL) {
+        index = current->next;
+        while (index != NULL) {
+            if (current->itemData.price > index->itemData.price) {
+                temp = current->itemData.price;
+                current->itemData.price = index->itemData.price;
+                index->itemData.price = temp;
+            }
+            index = index->next;
+        }
+        current = current->next;
+    }
+}
+void showMenu(item storeProducts[], node *head, int *total) {
+    while (true) {
+        print("1. Add item to cart");
+        print("2. Remove item from cart");
+        print("3. View cart");
+        print("4. Checkout");
+        print("5. Exit");
+        int choice = (int)getNum("Enter your choice: ");  // just made it a one line implementation --gelo
+        switch (choice) {
+            case 1:
+                print("1. Add item to cart");
+                getProducts(storeProducts, head);
+                break;
+            case 2:
+                print("2. Remove item from cart");
+
+                break;
+            case 3:
+                print("3. View cart");
+                break;
+            case 4:
+                print("4. Checkout");
+                break;
+            case 5: {
+                print("Group Name: Ice Cream");
+                print("Members:");
+                print("Lazaro, John Gabriele R");
+                print("Ligutan, Aldrin Lorenz D.");
+                print("Maminta, John Angelo A.");
+                print("Quemuel, Mary Arwen L.");  // missing semi kanina
+
+                exit(0);
+            }
+                return;
+            default:
+                print("Invalid input. Try again!");
+        }
+    }
+}
+void init(item storeProducts[]) {
+    for (int i = 0; i < MAXITEMS; i++) {
+        storeProducts[i].id = i;
+        storeProducts[i].name = "Item " + to_string(i);
+        storeProducts[i].price = rand() % 1000 + 1;
+    }
+}
+void getProducts(item storeProducts[], node *head, bool isInsert = true) {
+    // ang sabi ko is name at yung price lang
+
+    // tama diba? for loop tapos tsaka mag print void select an item? yup. tama this. but not void. tama na yung code na sa baba nitong comment.
+    for (int i = 0; i < MAXITEMS; i++) {
+        for (int i = 0; i < MAXITEMS; i++) {
+            print(i);
+            printLn("name ");
+            print(storeProducts[i].name);
+            printLn("price ");
+            print(storeProducts[i].price);
+        }
+        print("Select an item: ");
+        int choice = (int)getNum("");
+        if (isInsert)
+            insert(head, storeProducts[choice]);
+        else
+            remove(head, storeProducts[choice]);
+    }
+}
+int main(int argc, char const *argv[]) {
+    // create a linked list that would be used as a customer's cart
+    int *total = 0;
+    node *head = new node;
+    head->next = NULL;
+    item storeProducts[MAXITEMS];
+    init(storeProducts);
+    showMenu(storeProducts, head, total);
+    cout << "The total price is: " << total << endl;
+    return 0;
+}
